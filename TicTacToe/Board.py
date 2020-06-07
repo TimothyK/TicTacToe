@@ -1,6 +1,10 @@
+from colorama import init
+from colorama import Fore, Back, Style
+
 class Board:
     def __init__(self):
         self.__board = [str(x) for x in list(range(1,10))]
+        init()
 
     def __row(self, x):
         return self.__board[(x-1)*3:x*3]
@@ -14,10 +18,23 @@ class Board:
         return[self.__row(1), self.__row(2), self.__row(3), self.__col(1), self.__col(2), self.__col(3), self.__forward_cross_line(), self.__back_cross_line()]
     
     def print_board(self):
-        print(self.__row(3))
-        print(self.__row(2))
-        print(self.__row(1))
+        def add_color(x):
+            #program must be run from a command line to see the colors. 
+            if x == 'X':
+                return Style.BRIGHT + Fore.YELLOW + x + Fore.RESET + Style.RESET_ALL
+            elif x == 'O':
+                return Style.BRIGHT + Fore.GREEN + x + Fore.RESET + Style.RESET_ALL
+            else:
+                return x
 
+        def print_row(row):
+            print(' '.join(add_color(x) for x in row))
+
+        print_row(self.__row(3))
+        print_row(self.__row(2))
+        print_row(self.__row(1))
+        print(Fore.RESET)
+                                     
     def available_inputs(self):
         return [x for x in self.__board if x.isdigit()]
 

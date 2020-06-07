@@ -10,14 +10,16 @@ def get_input(board, player):
             print("The available selections are: {}".format(' '.join(available)))
 
 #GAME MAIN
-board = Board()
-player = 'X'
+def run():
+    board = Board()
+    player = 'X'
 
-while not board.is_game_over():
-    board.print_board()    
-    cell = get_input(board, player)    
-    board.change_cell(cell, player)
-    player = 'O' if player=='X' else 'X'
+    while not board.is_game_over():
+        board.print_board()    
+        cell = get_input(board, player)    
+        board.change_cell(cell, player)
+        player = 'O' if player=='X' else 'X'
 
-board.print_game_result()
+    board.print_game_result()
 
+run()
