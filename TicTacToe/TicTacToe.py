@@ -9,10 +9,25 @@ print_board()
 
 player = 'X'
 
-cell = input(f"Enter a selection for {player}: ")
+def available_inputs():
+    return [x for x in board if x.isdigit()]
+
+def is_game_over():
+    return available_inputs() == []
+
+def get_input():
+    available = available_inputs()
+    while True:
+        result = input(f"Enter a selection for {player}: ")
+        if result in available:
+            return int(result)-1
+        else:
+            print("The available selections are: {}".format(' '.join(available)))
+       
+cell = get_input()
 
 print("You choose {}".format(cell))
 
-board[int(cell)-1] = player
+board[cell] = player
 print_board()
 
