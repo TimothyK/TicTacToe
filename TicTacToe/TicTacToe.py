@@ -22,4 +22,5 @@ def run():
 
     board.print_game_result()
 
-run()
+if __name__ == "__main__":
+    run()
