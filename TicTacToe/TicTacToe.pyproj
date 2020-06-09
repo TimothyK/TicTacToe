@@ -11,6 +11,9 @@
     <OutputPath>.</OutputPath>
     <Name>TicTacToe</Name>
     <RootNamespace>TicTacToe</RootNamespace>
+    <TestFramework>unittest</TestFramework>
+    <UnitTestPattern>*.py</UnitTestPattern>
+    <UnitTestRootDirectory>tests</UnitTestRootDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,7 +27,16 @@
     <Compile Include="board.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tests\cell_selection.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tests\winner.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tic_tac_toe.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="tests\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
